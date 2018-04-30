@@ -28,9 +28,10 @@
             <string>// current number of floor tiles
 global.floorTiles=0;
 global.mapGenerated=0;
-global.maxChests=4;
 global.chestsMade=0;
+global.maxFloorTiles=110;
 global.chestDropChance=10;
+global.maxChests=4;
 global.maxEnemies=5;
 
 // direction
@@ -53,6 +54,9 @@ if(y&gt;room_height-96){y=room_height-96;}
 
 // generation speed
 room_speed=48;
+
+// place a spawn point if none exist
+if(!instance_exists(playerSpawn01)){ instance_create(x,y,playerSpawn01);}
 </string>
           </argument>
         </arguments>
@@ -75,10 +79,7 @@ room_speed=48;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// place a spawn point if none exist
-if(!instance_exists(playerSpawn01)){ instance_create(x,y,playerSpawn01);}
-
-// recorder previous direction
+            <string>// recorder previous direction
 oDir=dir;
 
 //check if tile is already there
@@ -161,7 +162,7 @@ if(!place_meeting(x,y,objFloor)){
 }
 
 // remove maker if max floors is reached
-if(global.floorTiles&gt;=110){
+if(global.floorTiles&gt;=global.maxFloorTiles){
     // generate wall tiles
     var i;
     for(i=0;i&lt;instance_number(objFloor);i++){
