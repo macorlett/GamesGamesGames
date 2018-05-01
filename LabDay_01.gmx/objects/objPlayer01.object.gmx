@@ -114,30 +114,30 @@ currentY=y;
 
 // player movement
 if(keyboard_check(ord('A'))){
-    if(!place_meeting(x-playerSpeed,y,objWall)){
+    if(!place_meeting(x-playerSpeed,y,objWallTile)){
         x-=playerSpeed;
-    }else if(!place_meeting(x-(playerSpeed/2),y,objWall)){
+    }else if(!place_meeting(x-(playerSpeed/2),y,objWallTile)){
         x-=playerSpeed/2;
     }    
 }
 if(keyboard_check(ord('D'))){
-    if(!place_meeting(x+playerSpeed,y,objWall)){
+    if(!place_meeting(x+playerSpeed,y,objWallTile)){
         x+=playerSpeed;
-    }else if(!place_meeting(x+(playerSpeed/2),y,objWall)){
+    }else if(!place_meeting(x+(playerSpeed/2),y,objWallTile)){
         x+=playerSpeed/2;
     }
 }
 if(keyboard_check(ord('W'))){
-    if(!place_meeting(x,y-playerSpeed,objWall)){
+    if(!place_meeting(x,y-playerSpeed,objWallTile)){
         y-=playerSpeed;
-    }else if(!place_meeting(x,y-(playerSpeed/2),objWall)){
+    }else if(!place_meeting(x,y-(playerSpeed/2),objWallTile)){
         y-=playerSpeed/2;
     }
 }
 if(keyboard_check(ord('S'))){
-    if(!place_meeting(x,y+playerSpeed,objWall)){
+    if(!place_meeting(x,y+playerSpeed,objWallTile)){
         y+=playerSpeed;
-    }else if(!place_meeting(x,y+(playerSpeed/2),objWall)){
+    }else if(!place_meeting(x,y+(playerSpeed/2),objWallTile)){
         y+=playerSpeed/2;
     }
 }
@@ -171,11 +171,17 @@ if(mouse_x&gt;x&amp;&amp;image_xscale&lt;0){
 
 
 if(mouse_check_button_pressed(mb_left)){
-    with(objFloor){
-        if(collision_circle(x,y,32,objPlayer01,false,true)){
-            sprite_index=floorSprite02;
-        }
+    var pDir=point_direction(objPlayer01.x,objPlayer01.y,mouse_x,mouse_y);
+    with(instance_create(x+lengthdir_x(20,pDir),y+lengthdir_y(20,pDir),eLargeSwipe)){
+    alarm[0]=room_speed/10;
+    image_angle=pDir-135;
     }
+    
+    //with(objFloor){
+        //if(collision_circle(x,y,32,objPlayer01,false,true)){
+          //  sprite_index=floorSprite02;
+        //}
+    //}
 }
 </string>
           </argument>

@@ -24,18 +24,29 @@
     <sprite>sprites\WP_sword_01</sprite>
     <sprite>sprites\WP_blade_01</sprite>
     <sprite>sprites\destructSprite01</sprite>
+    <sprite>sprites\grassTiles</sprite>
+    <sprite>sprites\wallTiles</sprite>
+    <sprite>sprites\wallTemp</sprite>
+    <sprite>sprites\sLargeSwipe</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background01</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\EnemyMove.gml</script>
+    <script>scripts\randomSeedGenerator.gml</script>
+    <script>scripts\makeTileSection.gml</script>
+    <script>scripts\randomTileSelect.gml</script>
+    <script>scripts\wallTileSpriteSelect.gml</script>
   </scripts>
   <objects name="objects">
+    <objects name="attacks">
+      <object>objects\eLargeSwipe</object>
+    </objects>
     <objects name="generators">
       <object>objects\floorMaker</object>
       <object>objects\floorMakerSpawn</object>
+      <object>objects\objWorldBuilder</object>
     </objects>
     <objects name="worldObjest">
       <object>objects\objFloor</object>
@@ -52,6 +63,8 @@
       <object>objects\objEnemy01</object>
       <object>objects\objFloorDamaged</object>
       <object>objects\objWallTop</object>
+      <object>objects\objGrassTile</object>
+      <object>objects\objWallTile</object>
     </objects>
     <object>objects\objView</object>
   </objects>

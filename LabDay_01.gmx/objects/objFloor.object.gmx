@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(x&lt;32||x&gt;room_width-64){ instance_destroy(); }
-if(y&lt;32||y&gt;room_height-64){ instance_destroy(); }
+            <string>if(x&lt;32||x&gt;room_width-64||y&lt;32||y&gt;room_height-64){
+    instance_destroy();
+} 
 </string>
           </argument>
         </arguments>

@@ -50,8 +50,8 @@
             <string>if(global.mapGenerated==1){
     // set enemy spawn points
     var i;
-    for(i=0;i&lt;instance_number(objFloor);i++){
-        temp=instance_find(objFloor,i);
+    for(i=0;i&lt;instance_number(global.worldTileType);i++){
+        temp=instance_find(global.worldTileType,i);
         if(!instance_exists(objEnemySpawn)&amp;&amp;distance_to_object(temp)&gt;96){
             instance_create(temp.x,temp.y,objEnemySpawn);
         }else if(distance_to_object(temp)&gt;96){
@@ -64,16 +64,16 @@
     }
 
     // spawn enemies at spawn points
-    for(i=0;i&lt;global.maxEnemies;i++){
+    for(i=0;i&lt;global.maxEnemyPower;i++){
         eneNumb=instance_number(objEnemySpawn);
         spawn=instance_find(objEnemySpawn,irandom(eneNumb-1));
-        instance_create(spawn.x+16,spawn.y+16,objEnemy01);
-        if(i&lt;global.maxEnemies-1){
+        instance_create(spawn.x+8,spawn.y+8,objEnemy01);
+        if(i&lt;global.maxEnemyPower-1){
             with(spawn){ instance_destroy(); }
         }
     }
     with(objEnemySpawn){ instance_destroy(); }
-    instance_create(x+16,y+16,objPlayer01);
+    instance_create(x+8,y+8,objPlayer01);
     instance_destroy();
 }
 </string>

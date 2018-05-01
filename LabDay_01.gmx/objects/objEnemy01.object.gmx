@@ -79,28 +79,28 @@ switch(move){
     case 1: // move left
         xDes=x+irandom_range(minWalkDistance,maxWalkDistance);
         yDes=y+irandom_range(-walkAngleOffset,walkAngleOffset);
-        dest=instance_nearest(xDes,yDes,objFloor);
+        dest=instance_nearest(xDes,yDes,objGrassTile);
         isMoving=true;
         break;
     
     case 2: // move right
         xDes=x+irandom_range(-maxWalkDistance,-minWalkDistance);
         yDes=y+irandom_range(-walkAngleOffset,walkAngleOffset);
-        dest=instance_nearest(xDes,yDes,objFloor);
+        dest=instance_nearest(xDes,yDes,objGrassTile);
         isMoving=true;
         break;
     
     case 3: // move up
         xDes=x+irandom_range(-walkAngleOffset,walkAngleOffset);
         yDes=y+irandom_range(-maxWalkDistance,-minWalkDistance);
-        dest=instance_nearest(xDes,yDes,objFloor);
+        dest=instance_nearest(xDes,yDes,objGrassTile);
         isMoving=true;
         break;
     
     case 4: // move down
         xDes=x+irandom_range(-walkAngleOffset,walkAngleOffset);
         yDes=y+irandom_range(minWalkDistance,maxWalkDistance);
-        dest=instance_nearest(xDes,yDes,objFloor);
+        dest=instance_nearest(xDes,yDes,objGrassTile);
         isMoving=true;
         break;
     
@@ -114,7 +114,7 @@ switch(move){
 }
 
 if(isMoving){
-    if(!collision_line(x,y,dest.x+irandom_range(8,24),dest.y+irandom_range(8,24),objWall,false,false)){
+    if(!collision_line(x,y,dest.x+irandom_range(8,24),dest.y+irandom_range(8,24),objWallTile,false,false)){
         if(mp_potential_step(dest.x+16,dest.y+16,moveSpeed,false)){
             isMoving=false;
             waitTime=random(maxWait);
