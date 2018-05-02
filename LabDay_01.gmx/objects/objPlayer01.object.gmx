@@ -37,6 +37,7 @@ playerShadow=instance_create(x,y+8,objPcShadow);
 
 // add sword
 playerSword=instance_create(x,y,objPlayerBlade);
+playerWeaponPosition=0;
 </string>
           </argument>
         </arguments>
@@ -68,12 +69,28 @@ playerSword.x=x;
 playerSword.y=y;
 
 // sword angle
-if(image_xscale&gt;0&amp;&amp;!playerAttacking){
-    playerSword.image_angle=-45;
-}else if(!playerAttacking){
-    playerSword.image_angle=45;
+//if(image_xscale&gt;0&amp;&amp;!playerAttacking){
+//    playerSword.image_angle=-45;
+//}else if(!playerAttacking){
+//    playerSword.image_angle=45;
+//}
+playerSword.image_angle=point_direction(objPlayer01.x,objPlayer01.y,mouse_x,mouse_y);
+
+if(playerWeaponPosition&gt;0){
+    if(image_xscale&gt;0){
+        playerSword.image_angle+=180;      
+    }
+    playerSword.depth=-2;
+}else{
+    if(image_xscale&lt;0){
+        playerSword.image_angle+=180;
+    }
+    playerSword.y=y+4;
+    playerSword.depth=-4;
 }
 
+
+// pushback from wall
 if(place_meeting(x+1,y,objWall)){
     x--;
 }
@@ -171,10 +188,14 @@ if(mouse_x&gt;x&amp;&amp;image_xscale&lt;0){
 
 
 if(mouse_check_button_pressed(mb_left)){
+    if(playerWeaponPosition&gt;0){playerWeaponPosition=0;}else{playerWeaponPosition=1;}    
+
     var pDir=point_direction(objPlayer01.x,objPlayer01.y,mouse_x,mouse_y);
+    
     with(instance_create(x+lengthdir_x(20,pDir),y+lengthdir_y(20,pDir),eLargeSwipe)){
-    alarm[0]=room_speed/10;
-    image_angle=pDir-135;
+        alarm[0]=room_speed/10;
+        image_angle=pDir-90;
+        image_speed=0.5;
     }
     
     //with(objFloor){
