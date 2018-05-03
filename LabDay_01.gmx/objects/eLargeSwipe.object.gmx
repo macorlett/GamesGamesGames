@@ -58,13 +58,19 @@ if(place_meeting(x,y,objWallTile)){
         with(instance_create(x,y,objGrassTile)){
             script_execute(randomTileSelect(1));
             
-            if(place_empty(x+16,y)){instance_create(x+16,y,objWallTile);}
-            if(place_empty(x+16,y+16)){instance_create(x+16,y+16,objWallTile);}
-            if(place_empty(x,y+16)){instance_create(x,y+16,objWallTile);}
-            if(place_empty(x-16,y+16)){instance_create(x-16,y+16,objWallTile);}
-            if(place_empty(x-16,y)){instance_create(x-16,y,objWallTile);}
-            if(place_empty(x-16,y-16)){instance_create(x-16,y-16,objWallTile);}
-            if(place_empty(x+16,y-16)){instance_create(x+16,y-16,objWallTile);}
+            if(!place_meeting(x+16,y,objGrassTile)&amp;&amp;!place_meeting(x+16,y,objWallTile)){instance_create(x+16,y,objWallTile);}
+            if(!place_meeting(x+16,y+16,objGrassTile)&amp;&amp;!place_meeting(x+16,y+16,objWallTile)){instance_create(x+16,y+16,objWallTile);}
+            //if(place_empty(x+16,y+16)){instance_create(x+16,y+16,objWallTile);}
+            if(!place_meeting(x,y+16,objGrassTile)&amp;&amp;!place_meeting(x,y+16,objWallTile)){instance_create(x,y+16,objWallTile);}
+            //if(place_empty(x,y+16)){instance_create(x,y+16,objWallTile);}
+            if(!place_meeting(x-16,y-16,objGrassTile)&amp;&amp;!place_meeting(x-16,y-16,objWallTile)){instance_create(x-16,y+16,objWallTile);}
+            //if(place_empty(x-16,y+16)){instance_create(x-16,y+16,objWallTile);}
+            if(!place_meeting(x-16,y+16,objGrassTile)&amp;&amp;!place_meeting(x-16,y+16,objWallTile)){instance_create(x-16,y,objWallTile);}
+            //if(place_empty(x-16,y)){instance_create(x-16,y,objWallTile);}
+            if(!place_meeting(x-16,y-16,objGrassTile)&amp;&amp;!place_meeting(x-16,y-16,objWallTile)){instance_create(x-16,y-16,objWallTile);}
+            //if(place_empty(x-16,y-16)){instance_create(x-16,y-16,objWallTile);}
+            if(!place_meeting(x+16,y-16,objGrassTile)&amp;&amp;!place_meeting(x+16,y-16,objWallTile)){instance_create(x+16,y-16,objWallTile);}
+            //if(place_empty(x+16,y-16)){instance_create(x+16,y-16,objWallTile);}
         }
         with(objWallTile){script_execute(wallTileSpriteSelect);}
         instance_destroy();
